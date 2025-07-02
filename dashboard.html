@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .simple-card {
+            background: #fff;
+            border: 1px solid #222;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            padding: 2.2rem 1.5rem;
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 1.3rem;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.1rem;
+        }
+        input[type="text"] {
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            border: 1px solid #222;
+            font-size: 1rem;
+            background: #fff;
+            color: #111;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus {
+            border: 1.5px solid #111;
+        }
+        button[type="submit"] {
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1.1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: #fff;
+            color: #111;
+            border: 1px solid #111;
+        }
+        .alert {
+            background: #111;
+            color: #fff;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.1rem;
+            color: #111;
+            font-size: 1.05rem;
+        }
+        .weather-info div {
+            flex: 1;
+            text-align: center;
+        }
+        .weather-img {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.1rem;
+        }
+        .weather-img img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #fff;
+        }
+        @media (max-width: 500px) {
+            .simple-card { padding: 1rem 0.3rem; }
+            .weather-info { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="simple-card">
+        <h2>Weather in {{ city }}</h2>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city" value="{{ city }}" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        {% if error %}
+            <div class="alert">{{ error }}</div>
+        {% endif %}
+        {% if temperature is not none and humidity is not none %}
+            <div class="weather-info">
+                <div><strong>Temperature:</strong><br>{{ temperature }}°C</div>
+                <div><strong>Humidity:</strong><br>{{ humidity }}%</div>
+                <div><strong>Description:</strong><br>{{ description }}</div>
+            </div>
+        {% endif %}
+        {% if img_data %}
+            <div class="weather-img">
+                <img src="data:image/png;base64,{{ img_data }}" alt="Weather Visualization">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
