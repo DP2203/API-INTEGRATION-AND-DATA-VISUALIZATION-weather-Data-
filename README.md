@@ -1,6 +1,6 @@
 # Weather Dashboard
 
-This project is a simple weather dashboard built with Flask. It fetches real-time weather data from the OpenWeatherMap API and visualizes temperature and humidity using Matplotlib and Seaborn.
+This project is a simple weather dashboard built with Flask. It fetches real-time weather data from the WeatherAPI.com API and visualizes temperature and humidity using Matplotlib and Seaborn.
 
 ## Features
 - Enter any city to view its current weather.
@@ -9,13 +9,14 @@ This project is a simple weather dashboard built with Flask. It fetches real-tim
 
 ## Setup Instructions
 
-### 1. Get an OpenWeatherMap API Key
-- Sign up for a free account at [OpenWeatherMap](http://api.weatherapi.com/v1/current.json).
+### 1. Get a WeatherAPI.com API Key
+- Sign up for a free account at [WeatherAPI.com](https://www.weatherapi.com/).
 - Go to the API keys section and copy your API key.
 - Open `app.py` and replace the placeholder with your API key:
   ```python
   API_KEY = "YOUR_ACTUAL_API_KEY"
   ```
+  (Or directly set your key in the `API_KEY` variable in `app.py`.)
 
 ### 2. Install Dependencies
 Run the following command in your project directory:
