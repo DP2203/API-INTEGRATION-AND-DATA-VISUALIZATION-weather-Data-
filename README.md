@@ -10,7 +10,7 @@ This project is a simple weather dashboard built with Flask. It fetches real-tim
 ## Setup Instructions
 
 ### 1. Get an OpenWeatherMap API Key
-- Sign up for a free account at [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
+- Sign up for a free account at [OpenWeatherMap](http://api.weatherapi.com/v1/current.json).
 - Go to the API keys section and copy your API key.
 - Open `app.py` and replace the placeholder with your API key:
   ```python
